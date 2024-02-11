@@ -1,0 +1,25 @@
+[package]
+name = "Pangui"
+version = "0.1.0"
+authors = ["pauzedemrd"]
+rust-version = "1.75.0"
+description = "Un bot para ayudar en asuntos de la Universidad Católica de Chile hecho en Rust"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenv = "0.15.0"
+rand = "0.8.5"
+tokio = { version = "1.36.0", features = ["macros", "rt-multi-thread"] }
+tracing = "0.1.40"
+
+[dependencies.serenity]
+version = "0.12.0"
+default-features = false
+features = ["rustls_backend", "chrono", "framework"]
+
+[dependencies.poise]
+version = "0.6.1"
+default-features = false
+features = ["cache"]
