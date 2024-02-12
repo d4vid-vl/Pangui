@@ -5,7 +5,7 @@ use tracing::error;
 use crate::{Context, Error};
 
 use super::{
-    CARGO_AUTHORS, CARGO_DESCRIPTION, CARGO_NAME, CARGO_RUST_VERSION, CARGO_VERSION, GITHUB_URL,
+    CARGO_AUTHORS, CARGO_DESCRIPTION, CARGO_NAME, CARGO_RUST_VERSION, CARGO_VERSION, GITHUB_URL, BOT_INVITE_URL,
 };
 
 #[poise::command(
@@ -35,6 +35,7 @@ pub async fn info(ctx: Context<'_>) -> Result<(), Error> {
         CARGO_DESCRIPTION,  // 3
         GITHUB_URL,         // 4
         CARGO_RUST_VERSION, // 5
+        BOT_INVITE_URL,
     ];
 
     let author = match constants[2].split(',').next() {
@@ -55,7 +56,7 @@ pub async fn info(ctx: Context<'_>) -> Result<(), Error> {
         ("Serenity", "0.12.0", true),
         ("Poise", "0.6.1", true)
     ])
-    .url(format!("{}/{}", constants[4], constants[0]))
+    .url(format!("{}", constants[6]))
     .footer(embed_footer)
     .colour(branding::BLURPLE)
     .timestamp(Timestamp::now());
