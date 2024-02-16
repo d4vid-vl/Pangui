@@ -35,7 +35,7 @@ pub async fn info(ctx: Context<'_>) -> Result<(), Error> {
         CARGO_DESCRIPTION,  // 3
         GITHUB_URL,         // 4
         CARGO_RUST_VERSION, // 5
-        BOT_INVITE_URL,
+        BOT_INVITE_URL,     // 6
     ];
 
     let author = match constants[2].split(',').next() {
