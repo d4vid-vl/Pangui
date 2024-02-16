@@ -13,13 +13,14 @@ dotenv = "0.15.0"
 rand = "0.8.5"
 tokio = { version = "1.36.0", features = ["macros", "rt-multi-thread"] }
 tracing = "0.1.40"
+BCUCRust = { path = "../BCUCRust" }
 
 [dependencies.serenity]
 version = "0.12.0"
 default-features = false
-features = ["rustls_backend", "chrono", "framework"]
+features = ["rustls_backend", "chrono", "framework", "builder"]
 
 [dependencies.poise]
 version = "0.6.1"
 default-features = false
-features = ["cache"]
+features = ["cache", "chrono"]
