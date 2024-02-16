@@ -1,4 +1,5 @@
 mod framework;
+mod utils;
 
 use framework::{framework, intents};
 use poise::serenity_prelude as serenity;
@@ -11,7 +12,7 @@ type Context<'a> = poise::Context<'a, Data, Error>;
 #[tokio::main]
 async fn main() {
     dotenv::dotenv().expect("Expected env");
-    let token = std::env::var("PANGUI_TOKEN").expect("missing DISCORD_TOKEN");
+    let token = std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN");
     let intents = intents();
     let framework = framework().await;
 
