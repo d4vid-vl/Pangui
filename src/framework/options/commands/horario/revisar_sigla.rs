@@ -34,7 +34,7 @@ impl From<Periodos> for String {
     required_bot_permissions = "SEND_MESSAGES",
     user_cooldown = 5,
 )]
-/// Eliges el periodo y nombre de algún curso para ver todos los cursos de ese tipo
+/// Eliges el periodo y sigla de algún curso para ver todos los cursos de ese tipo
 pub async fn revisar_sigla(
     ctx: Context<'_>,
     #[description = "Periodo a seleccionar"] periodo: Periodos,
@@ -52,25 +52,25 @@ pub async fn revisar_sigla(
     match cursos_busqueda {
         Ok(cursos) => {
 
-            for curso in cursos {
+            for (index, curso) in cursos.iter().enumerate() {
                 let horarios = &curso.horario;
                 let horarios_string: String = horarios.iter().map(|s| s.to_string()).collect::<Vec<_>>().join(", ");
                 embeds.push(
                     CreateEmbed::new()
-                    .title("Resultados de la búsqueda")
+                    .title(format!("Resultados de la búsqueda · Resultado {} de {}", index + 1 ,cursos.len() ))
                     .fields(vec![
                     ("NRC", curso.nrc.to_string(), true),
-                    ("Sigla", curso.sigla, true),
+                    ("Sigla", curso.sigla.clone(), true),
                     ("Permite Retiro", curso.permite_retiro.to_string(), true),
                     ("Inglés", curso.ingles.to_string(), true),
                     ("Seccion", curso.seccion.to_string(), true),
                     ("Aprobación Especial", curso.aprobacion_especial.to_string(), true),
-                    ("Área", curso.area, true),
-                    ("Formato", curso.formato, true),
-                    ("Categoría", curso.categoria, true),
-                    ("Nombre", curso.nombre, true),
-                    ("Profesor", curso.profesor, true),
-                    ("Campus", curso.campus, true),
+                    ("Área", curso.area.clone(), true),
+                    ("Formato", curso.formato.clone(), true),
+                    ("Categoría", curso.categoria.clone(), true),
+                    ("Nombre", curso.nombre.clone(), true),
+                    ("Profesor", curso.profesor.clone(), true),
+                    ("Campus", curso.campus.clone(), true),
                     ("Creditos", curso.creditos.to_string(), true),
                     ("Vacantes Totales", curso.vacantes_totales.to_string(), true),
                     ("Vacantes Disponibles", curso.vacantes_disponibles.to_string(), true),
@@ -79,6 +79,7 @@ pub async fn revisar_sigla(
                     .footer(CreateEmbedFooter::new(format!("Pedido por: {}", &username)).icon_url(&userurl))
                     .timestamp(Timestamp::now())
                     .color(serenity::Color::from_rgb(229, 189, 20))
+                    .thumbnail("https://cdn.discordapp.com/attachments/1203428555933876254/1208177205293883413/PUC.png?ex=65e255b4&is=65cfe0b4&hm=b9885400e96dbaede3fc2514b54251d7178da3460478ae415502b6bc7f4ed4b8&")
                 );
             }
 
