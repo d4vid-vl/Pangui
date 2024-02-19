@@ -1,7 +1,10 @@
-use ::serenity::{builder::{CreateEmbed, CreateEmbedFooter}, model::Timestamp};
 use crate::{utils::components::responses, Context, Error};
-use BCUCRust::cursos::*;
+use ::serenity::{
+    builder::{CreateEmbed, CreateEmbedFooter},
+    model::Timestamp,
+};
 use poise::serenity_prelude as serenity;
+use BCUCRust::cursos::*;
 
 #[derive(poise::ChoiceParameter)]
 pub enum Periodos {
@@ -13,7 +16,6 @@ pub enum Periodos {
     Periodo3 = 3,
     #[name = "2024-1"]
     Periodo4 = 4,
-
 }
 
 impl From<Periodos> for String {
@@ -32,7 +34,7 @@ impl From<Periodos> for String {
     prefix_command,
     category = "Universidad",
     required_bot_permissions = "SEND_MESSAGES",
-    user_cooldown = 5,
+    user_cooldown = 5
 )]
 /// Eliges el periodo y nombre de algún curso para ver todos los cursos de ese tipo
 pub async fn revisar_nombre(
@@ -51,10 +53,13 @@ pub async fn revisar_nombre(
 
     match cursos_busqueda {
         Ok(cursos) => {
-
             for (index, curso) in cursos.iter().enumerate() {
                 let horarios = &curso.horario;
-                let horarios_string: String = horarios.iter().map(|s| s.to_string()).collect::<Vec<_>>().join(", ");
+                let horarios_string = horarios
+                    .iter()
+                    .map(|s| s.to_string())
+                    .collect::<Vec<_>>()
+                    .join(", ");
                 embeds.push(
                     CreateEmbed::new()
                     .title(format!("Resultados de la búsqueda · Resultado {} de {}", index + 1 ,cursos.len() ))
@@ -83,8 +88,7 @@ pub async fn revisar_nombre(
                 );
             }
 
-        responses::paginate_embeds(ctx, embeds).await?;
-
+            responses::paginate_embeds(ctx, embeds).await?;
         }
 
         Err(err) => {
@@ -93,5 +97,4 @@ pub async fn revisar_nombre(
     }
 
     Ok(())
-
 }
