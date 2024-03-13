@@ -14,5 +14,7 @@ pub async fn artista(
 ) -> Result<(), Error> {
     ctx.defer().await?;
 
+    // TODO: Aplicar la lógica de la función `artist_data` de `spotify_artists.rs` aquí
+
     Ok(())
 }
