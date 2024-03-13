@@ -22,6 +22,7 @@ dependencies = [
  "dotenv",
  "poise",
  "reqwest",
+ "serde",
  "serenity",
  "spotify-rs",
  "tokio",
