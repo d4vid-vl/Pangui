@@ -1,6 +1,7 @@
 use poise::CreateReply;
-use serenity::{all::colours::branding, builder::{CreateEmbed, CreateEmbedAuthor, CreateEmbedFooter}, model::Timestamp};
+use serenity::{builder::{CreateEmbed, CreateEmbedAuthor, CreateEmbedFooter}, model::Timestamp};
 use tracing::error;
+use poise::serenity_prelude as serenity;
 
 use crate::{Context, Error};
 
@@ -58,7 +59,7 @@ pub async fn info(ctx: Context<'_>) -> Result<(), Error> {
     ])
     .url(format!("{}", constants[6]))
     .footer(embed_footer)
-    .colour(branding::BLURPLE)
+    .colour(serenity::Color::from_rgb(229, 189, 20))
     .timestamp(Timestamp::now());
 
     let reply = CreateReply::default().embed(info_embed).ephemeral(false);
