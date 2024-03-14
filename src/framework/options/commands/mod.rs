@@ -12,5 +12,7 @@ pub async fn guild_commands() -> Vec<Command<Data, Error>> {
         horario::revisar_sigla::revisar_sigla(),
         horario::revisar_nrc::revisar_nrc(),
         horario::revisar_profesor::revisar_profesor(),
+        spotify::spotify_artista::spotify_artista(),
+        spotify::spotify_lp::spotify_lp(),
     ]
 }
