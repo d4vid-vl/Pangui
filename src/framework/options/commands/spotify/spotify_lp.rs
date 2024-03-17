@@ -21,12 +21,12 @@ pub async fn spotify_lp(
 
     let username = &ctx.author().name;
     let userurl = ctx.author().avatar_url().expect("none").to_string();
-    let tracks = album.tracks.expect("None :3").iter().map(|s| s.name.clone()).collect::<Vec<_>>().join(", ");
+    let tracks = album.tracks.items.iter().map(|x| x.name.clone()).collect::<Vec<String>>().join(", ");
 
     let embed = { CreateEmbed::new() 
     .author(CreateEmbedAuthor::new("Información del álbum").icon_url("https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-marilyn-scott-0.png"))
     .title(album.name)
-    .url(album.external_urls.expect("None :3").spotify)
+    .url(album.external_urls.spotify)
     .thumbnail(album.images.first().unwrap().url.clone()) // La primera imágen del álbum
     .color(serenity::Color::from_rgb(30, 215, 96))
     .timestamp(Timestamp::now())
@@ -35,10 +35,10 @@ pub async fn spotify_lp(
         ("Artista", album.artists.first().unwrap().name.clone(), true),
         ("Fecha de lanzamiento", album.release_date, true),
         ("Número de canciones", album.total_tracks.to_string(), true),
-        ("Tipo de álbum", album.album_type.clone(), true),
-        ("Sello discográfico", album.label.expect("None :3"), true),
+        ("Tipo de álbum", format!("{:?}", album.album_type), true),
+        ("Sello discográfico", album.label, true),
         ("Tracks", tracks, false),
-        ("Copyright", album.copyrights.expect("None :3").first().unwrap().text.clone(), false),
+        ("Copyright", album.copyrights.first().unwrap().text.clone(), false),
     ])
     };
 

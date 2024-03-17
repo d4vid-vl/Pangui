@@ -26,14 +26,14 @@ pub async fn spotify_artista(
     .author(CreateEmbedAuthor::new("Información del artista").icon_url("https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-marilyn-scott-0.png"))
     .title(artist.name)
     .url(artist.external_urls.spotify)
-    .thumbnail(artist.images.expect("None :3").first().unwrap().url.clone()) // La primera imágen del artista
+    .thumbnail(artist.images.first().unwrap().url.clone()) // La primera imágen del artista
     .color(serenity::Color::from_rgb(30, 215, 96))
     .timestamp(Timestamp::now())
     .footer(CreateEmbedFooter::new(format!("Solicitado por {}", &username)).icon_url(userurl))
     .fields([
-        ("Seguidores", artist.followers.expect("None :3").total.to_string(), true),
-        ("Popularidad", format!("{}%", artist.popularity.expect("None :3").to_string()), true),
-        ("Géneros", artist.genres.expect("None :3").join(", "), false),
+        ("Seguidores", artist.followers.total.to_string(), true),
+        ("Popularidad", format!("{}%", artist.popularity.to_string()), true),
+        ("Géneros", artist.genres.join(", "), false),
     ])
     };
 
