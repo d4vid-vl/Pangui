@@ -2,8 +2,8 @@
 name = "Pangui"
 version = "0.1.0"
 authors = ["pauzedemrd"]
-rust-version = "1.75.0"
-description = "Un bot para ayudar en asuntos de la Universidad Católica de Chile hecho en Rust"
+rust-version = "1.76.0"
+description = "Un bot de Discord para ayudar en asuntos de la Universidad Católica de Chile hecho en Rust"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
