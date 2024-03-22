@@ -13,11 +13,11 @@ use crate::utils::components::spotify_commands::spotify_lps::*;
 /// Muestra información de un álbum de Spotify
 pub async fn spotify_lp(
     ctx: Context<'_>,
-    #[description = "Nombre del álbum"] album_name: String,
+    #[description = "Nombre del álbum"] album: String,
 ) -> Result<(), Error> {
     ctx.defer().await?;
 
-    let album = album_data(album_name).await?; // Los datos del álbum en un struct
+    let album = album_data(album).await?; // Los datos del álbum en un struct
 
     let username = &ctx.author().name;
     let userurl = ctx.author().avatar_url().expect("none").to_string();
