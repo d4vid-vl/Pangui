@@ -1,7 +1,7 @@
 # Pangui
 > Un bot para ayudar en asuntos de la Universidad Católica de Chile hecho en Rust.
 
-[![Rust](https://img.shields.io/badge/Rust-%2B1.76-orange?logo=rust)](https://blog.rust-lang.org/2024/02/08/Rust-1.76.0.html)
+[![Rust](https://img.shields.io/badge/Rust-%2B1.77-orange?logo=rust)](https://blog.rust-lang.org/2024/02/08/Rust-1.76.0.html)
 [![License](https://img.shields.io/badge/License-MIT-red)](https://opensource.org/licenses/MIT)
 
 Este bot principalmente será un proyecto más una mezcla entre utilidad para la Universidad y un bot multiusos para aprender a usar API's, librerias, etc...

@@ -2,7 +2,7 @@
 name = "Pangui"
 version = "0.1.0"
 authors = ["pauzedemrd"]
-rust-version = "1.76.0"
+rust-version = "1.77.0"
 description = "Un bot de Discord para ayudar en asuntos de la Universidad Católica de Chile hecho en Rust"
 edition = "2021"
 
@@ -14,7 +14,7 @@ tokio = { version = "1.36.0", features = ["macros", "rt-multi-thread"] }
 tracing = "0.1.40"
 BCUCRust = { path = "../BCUCRust" }
 spotify-rs = "0.3.10"
-reqwest = { version = "0.11.25", features = ["json"] }
+reqwest = { version = "0.12.0", features = ["json"] }
 serde = "1.0.197"
 
 [dependencies.serenity]
