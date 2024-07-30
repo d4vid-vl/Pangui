@@ -5,24 +5,23 @@ use poise::{serenity_prelude as serenity, CreateReply};
 
 #[derive(poise::ChoiceParameter)]
 pub enum Periodos {
-    #[name = "2023-1"]
-    Periodo1 = 1,
-    #[name = "2023-2"]
-    Periodo2 = 2,
-    #[name = "2023-3"]
-    Periodo3 = 3,
     #[name = "2024-1"]
+    Periodo1 = 1,
+    #[name = "2024-2"]
+    Periodo2 = 2,
+    #[name = "2025-1"]
+    Periodo3 = 3,
+    #[name = "2025-2"]
     Periodo4 = 4,
-
 }
 
 impl From<Periodos> for String {
     fn from(periodo: Periodos) -> Self {
         match periodo {
-            Periodos::Periodo1 => "2023-1".to_string(),
-            Periodos::Periodo2 => "2023-2".to_string(),
-            Periodos::Periodo3 => "2023-3".to_string(),
-            Periodos::Periodo4 => "2024-1".to_string(),
+            Periodos::Periodo1 => "2024-1".to_string(),
+            Periodos::Periodo2 => "2024-2".to_string(),
+            Periodos::Periodo3 => "2025-1".to_string(),
+            Periodos::Periodo4 => "2025-2".to_string(),
         }
     }
 }
